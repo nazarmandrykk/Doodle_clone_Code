@@ -41,6 +41,8 @@ public class MainController {
         return "redirect:/main_title";
     }
 
+
+
     @GetMapping("/meeting_info/{id}")
     public String meetingDetails(@PathVariable(value = "id") Long id, Model model){
         Optional<Meeting> meetings = repository.findById(id);

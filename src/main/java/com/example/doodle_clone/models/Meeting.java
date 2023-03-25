@@ -2,6 +2,8 @@ package com.example.doodle_clone.models;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 
 public class Meeting {
@@ -87,8 +89,9 @@ public class Meeting {
         this.idUsers = idUsers;
         return this;
     }
+
     //inner
-    /*
+/*
     @Embedded
     private Slot slot;
 
@@ -103,7 +106,19 @@ public class Meeting {
 
 
     @Embeddable
-    public static class Slot{
+    public class Slot{
+        @Id
+        @GeneratedValue(strategy = GenerationType.AUTO)
+        private Long id;
+
+        public Long id() {
+            return id;
+        }
+
+        public Slot setId(Long id) {
+            this.id = id;
+            return this;
+        }
 
         private String name;
         private int costMember;
@@ -144,7 +159,9 @@ public class Meeting {
         }
     }
 
-     */
+ */
+
+
 
 
 
