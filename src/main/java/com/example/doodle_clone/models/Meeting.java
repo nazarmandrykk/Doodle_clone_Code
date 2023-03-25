@@ -1,11 +1,9 @@
 package com.example.doodle_clone.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+
 public class Meeting {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -89,11 +87,23 @@ public class Meeting {
         this.idUsers = idUsers;
         return this;
     }
-
     //inner
     /*
-    @Entity
-    class Slot{
+    @Embedded
+    private Slot slot;
+
+    public Slot slot() {
+        return slot;
+    }
+
+    public Meeting setSlot(Slot slot) {
+        this.slot = slot;
+        return this;
+    }
+
+
+    @Embeddable
+    public static class Slot{
 
         private String name;
         private int costMember;
@@ -135,4 +145,8 @@ public class Meeting {
     }
 
      */
+
+
+
+
 }
