@@ -1,0 +1,20 @@
+<!DOCTYPE HTML >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:each="el: ${meetings}">
+    <h3 th:text="${el.title}"></h3>
+    <p th:text="${el.text}"></p>
+    <p th:text="${el.location}"></p>
+    <p th:text="${el.count}"></p>
+    <a th:href="'meeting_info/'+${el.id}">Детально</a>
+    <br>
+</div>
+<br>
+<a href="/newTable">Створити зустріч</a>
+
+</body>
+</html>

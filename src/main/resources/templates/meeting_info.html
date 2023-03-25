@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:each="el: ${meetings}">
+    <h3 th:text="${el.title}"></h3>
+    <h3 th:text="${el.text}"></h3>
+    <p th:text="${el.location}"></p>
+    <form th:action="'/meeting_info/' + ${el.id} + '/remove'" method="post">
+        <button type="submit">Видалити</button>
+    </form>
+
+</div>
+
+<br>
+
+
+</body>
+</html>
