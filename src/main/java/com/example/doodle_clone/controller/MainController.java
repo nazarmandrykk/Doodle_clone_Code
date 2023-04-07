@@ -1,15 +1,15 @@
 package com.example.doodle_clone.controller;
 import com.example.doodle_clone.models.Meeting;
+import com.example.doodle_clone.models.Slot;
 import com.example.doodle_clone.repo.Repository;
+import com.example.doodle_clone.repo.SlotRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -17,6 +17,8 @@ public class MainController {
 
     @Autowired
     private Repository repository;
+    @Autowired
+    private SlotRepository slotRepository;
 
 
 
@@ -35,11 +37,27 @@ public class MainController {
 
 
     @PostMapping("/newTable")
-    public String createNewTable(@RequestParam String title,@RequestParam String text,@RequestParam String location,@RequestParam int count,Model model){
+    public String createNewTable(@RequestParam String title,@RequestParam String text,@RequestParam String location,@RequestParam int count,
+                                 @RequestParam("name") List<String> slotNames,
+                                 @RequestParam("costMember") List<Integer> slotCosts,Model model){
         Meeting meetings = new Meeting(title,text,location,count);
         repository.save(meetings);
+        List<Slot> slots = new ArrayList<>();
+        for (int i = 0; i < slotNames.size(); i++) {
+            Slot slot = new Slot(slotNames.get(i), slotCosts.get(i));
+            slot.setMeeting(meetings);
+            slots.add(slot);
+        }
+        meetings.setSlots(slots);
+
+        // Зберігаємо слоти в базі даних
+        for (Slot slot : slots) {
+            slotRepository.save(slot);
+        }
+
         return "redirect:/main_title";
     }
+
 
 
 
@@ -49,6 +67,7 @@ public class MainController {
         ArrayList<Meeting> res = new ArrayList<>();
         meetings.ifPresent(res::add);
         model.addAttribute("meetings",res);
+
         return "meeting_info";
     }
 
@@ -60,3 +79,5 @@ public class MainController {
     }
 
 }
+
+

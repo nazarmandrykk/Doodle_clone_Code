@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+      .slot {
+        border: 1px solid black;
+        padding: 10px;
+        margin: 10px;
+      }
+    </style>
 </head>
 <body>
 <div>
@@ -13,11 +19,45 @@
         <input type="text" name="text" placeholder="text">
         <input type="text" name="location" placeholder="location">
         <input type="number" name="count" placeholder="count">
+        <div id="slot-container">
+            <label for="slot-container">Slots:</label>
+            <div class="slot">
+                <input type="text" name="name" placeholder="name" required>
+                <input type="number" name="costMember" placeholder="costMember" required>
+                <button type="button" onclick="this.parentNode.remove()">Видалити</button>
+            </div>
+        </div>
+        <br /><br />
+        <button type="button" onclick="addSlot()">Додати слот</button>
+        <br /><br />
         <button type="submit">Створити</button>
     </form>
-    <br>
-    <h1>Слоти</h1>
-
 </div>
+<script type="text/javascript">
+      function addSlot() {
+        const slotContainer = document.getElementById("slot-container");
+        const slotDiv = document.createElement("div");
+        slotDiv.className = "slot";
+        const slotName = document.createElement("input");
+        slotName.type = "text";
+        slotName.name = "name";
+        slotName.placeholder = "name";
+        slotName.required = true;
+        const slotCost = document.createElement("input");
+        slotCost.type = "number";
+        slotCost.name = "costMember";
+        slotCost.placeholder = "costMember";
+        slotCost.required = true;
+        const slotStart = document.createElement("input");
+        const slotRemove = document.createElement("button");
+        slotRemove.type = "button";
+        slotRemove.innerText = "Видалити";
+        slotRemove.onclick = () => slotDiv.remove();
+        slotDiv.appendChild(slotName);
+        slotDiv.appendChild(slotCost);
+        slotDiv.appendChild(slotRemove);
+        slotContainer.appendChild(slotDiv);
+      }
+    </script>
 </body>
 </html>

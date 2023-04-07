@@ -5,11 +5,23 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-
 public class Meeting {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @OneToMany(mappedBy = "meeting")
+    private List<Slot> slots;
+
+
+    public List<Slot> slots() {
+        return slots;
+    }
+
+    public Meeting setSlots(List<Slot> slots) {
+        this.slots = slots;
+        return this;
+    }
 
     public Meeting(){
 
@@ -17,7 +29,9 @@ public class Meeting {
 
     private String title,text,location;
     private int count,IDadmin,idUsers;
+
     //time ????
+
 
 
     public Meeting( String title, String text, String location, int count) {
@@ -26,6 +40,7 @@ public class Meeting {
         this.location = location;
         this.count = count;
     }
+
 
     public Long id() {
         return id;
@@ -91,75 +106,10 @@ public class Meeting {
     }
 
     //inner
-/*
-    @Embedded
-    private Slot slot;
-
-    public Slot slot() {
-        return slot;
-    }
-
-    public Meeting setSlot(Slot slot) {
-        this.slot = slot;
-        return this;
-    }
 
 
-    @Embeddable
-    public class Slot{
-        @Id
-        @GeneratedValue(strategy = GenerationType.AUTO)
-        private Long id;
 
-        public Long id() {
-            return id;
-        }
 
-        public Slot setId(Long id) {
-            this.id = id;
-            return this;
-        }
-
-        private String name;
-        private int costMember;
-        //time???
-
-        private int idUsers;
-
-        public int idUsers() {
-            return idUsers;
-        }
-
-        public Slot setIdUsers(int idUsers) {
-            this.idUsers = idUsers;
-            return this;
-        }
-
-        public Slot(String name, int costMember) {
-            this.name = name;
-            this.costMember = costMember;
-        }
-
-        public String name() {
-            return name;
-        }
-
-        public Slot setName(String name) {
-            this.name = name;
-            return this;
-        }
-
-        public int costMember() {
-            return costMember;
-        }
-
-        public Slot setCostMember(int costMember) {
-            this.costMember = costMember;
-            return this;
-        }
-    }
-
- */
 
 
 

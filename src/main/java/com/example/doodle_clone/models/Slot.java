@@ -1,20 +1,38 @@
 package com.example.doodle_clone.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-/*
+import jakarta.persistence.*;
+
 @Entity
 public class Slot {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    public Meeting meeting() {
+        return meeting;
+    }
+
+    public Slot setMeeting(Meeting meeting) {
+        this.meeting = meeting;
+        return this;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "meeting_id", referencedColumnName = "id")
+    private Meeting meeting;
+
+
     private String name;
     private int costMember;
-    //time???
+
+
 
     private int idUsers;
+
+    public Slot(Meeting meeting, String name) {
+        this.costMember = costMember();
+        this.name = name;
+    }
 
     public int idUsers() {
         return idUsers;
@@ -49,6 +67,6 @@ public class Slot {
     }
 }
 
- */
+
 
 
