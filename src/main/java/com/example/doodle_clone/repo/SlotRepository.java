@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface SlotRepository extends CrudRepository<Slot,Long> {
     List<Slot> findByMeetingId(Long id);
+
 }
 
 

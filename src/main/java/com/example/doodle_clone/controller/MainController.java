@@ -16,7 +16,7 @@ import java.util.Optional;
 public class MainController {
 
     @Autowired
-    private Repository repository;
+    private Repository repository; //репозиторій зустрічі
     @Autowired
     private SlotRepository slotRepository;
 
@@ -68,6 +68,9 @@ public class MainController {
         meetings.ifPresent(res::add);
         model.addAttribute("meetings",res);
 
+        List<Slot> slots = slotRepository.findByMeetingId(id);
+        model.addAttribute("slots", slots);
+
         return "meeting_info";
     }
 
@@ -75,6 +78,7 @@ public class MainController {
     public String meetingDelete(@PathVariable(value = "id")long id,Model model){
         Meeting meeting = repository.findById(id).orElseThrow();
         repository.delete(meeting);
+
         return "redirect:/main_title";
     }
 

@@ -4,12 +4,16 @@ import jakarta.persistence.*;
 
 @Entity
 public class Slot {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     public Meeting meeting() {
         return meeting;
+    }
+    public Slot(){
+
     }
 
     public Slot setMeeting(Meeting meeting) {

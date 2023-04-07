@@ -13,6 +13,10 @@
         <button type="submit">Видалити</button>
     </form>
     <br>
+    <h4>Слоти:</h4>
+    <ul>
+        <li th:each="slot: ${slots}" th:text="${slot.name} + ' - ' + ${slot.costMember}"></li>
+    </ul>
 
 
 </div>
