@@ -1,5 +1,7 @@
 package com.example.doodle_clone.models;
 
+
+
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;

@@ -28,20 +28,20 @@ public class MainController {
     private SlotRepository slotRepository;
 
 
-    @GetMapping("/main_title")
+    @GetMapping("/main-title")
     public String mainTitle(Model model) {
         Iterable<Meeting> meetings = meetingRepository.findAll();
         model.addAttribute("meetings", meetings);
         return "mainMenu";
     }
 
-    @GetMapping("/newTable")
+    @GetMapping("/new-table")
     public String newTable(Model model) {
         return "newTable";
     }
 
 
-    @PostMapping("/newTable")
+    @PostMapping("/new-table")
     public String createNewTable(@RequestParam String title, @RequestParam String text, @RequestParam String location, @RequestParam int count,
                                  @RequestParam("name") List<String> slotNames,
                                  @RequestParam("costMember") List<Integer> slotCosts, Model model) {
@@ -60,7 +60,7 @@ public class MainController {
     }
 
 
-    @GetMapping("/meeting_info/{id}")
+    @GetMapping("/meeting-info/{id}")
     public String meetingDetails(@PathVariable(value = "id") Long id, Model model) {
         Optional<Meeting> meetings = meetingRepository.findById(id);
         ArrayList<Meeting> res = new ArrayList<>();
@@ -69,11 +69,10 @@ public class MainController {
 
         List<Slot> slots = slotRepository.findByMeetingId(id);
         model.addAttribute("slots", slots);
-
         return "meeting_info";
     }
 
-    @PostMapping("/meeting_info/{id}/remove")
+    @PostMapping("/meeting-info/{id}/remove")
     public String meetingDelete(@PathVariable(value = "id") long id, Model model) {
         Meeting meeting = meetingRepository.findById(id).orElseThrow();
         meetingRepository.delete(meeting);
