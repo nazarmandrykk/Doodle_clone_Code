@@ -1,8 +1,5 @@
 package com.example.doodle_clone.models;
 
-
-
-
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -31,8 +28,8 @@ public class Meeting {
     //time ????
 
 
-    public Meeting(String title, String text, String location, int count) { //this not a AllArgConstr.  this can be a RequiredArgsConstructor
-        this.title = title;                                                 //but this variable cant be `final`
+    public Meeting(String title, String text, String location, int count) {
+        this.title = title;
         this.text = text;
         this.location = location;
         this.count = count;
