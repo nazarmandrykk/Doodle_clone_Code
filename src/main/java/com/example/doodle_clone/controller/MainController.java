@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PathVariable;
 
 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -56,7 +57,7 @@ public class MainController {
                 .collect(Collectors.toList());
         meetings.setSlots(slots);
         slotRepository.saveAll(slots);
-        return "redirect:/main_title";
+        return "redirect:/main-title";
     }
 
 
@@ -77,7 +78,7 @@ public class MainController {
         Meeting meeting = meetingRepository.findById(id).orElseThrow();
         meetingRepository.delete(meeting);
         //cascad remove реалізувати
-        return "redirect:/main_title";
+        return "redirect:/main-title";
     }
 
 }
