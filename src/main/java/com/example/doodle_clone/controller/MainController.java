@@ -79,8 +79,8 @@ public class MainController {
         meetingRepository.delete(meeting);
         //cascad remove реалізувати
         return "redirect:/main-title";
+        //
     }
-
 }
 
 
