@@ -37,7 +37,7 @@ public class Slot {
 
 
     public Slot(Meeting meeting, String name) {
-        this.costMember = costMember;
+        this.meeting = meeting;
         this.name = name;
     }
 
