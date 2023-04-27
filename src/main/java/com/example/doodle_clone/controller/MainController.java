@@ -25,6 +25,7 @@ public class MainController {
 
     @Autowired
     private MeetingRepository meetingRepository; //репозиторій зустрічі
+
     @Autowired
     private SlotRepository slotRepository;
 

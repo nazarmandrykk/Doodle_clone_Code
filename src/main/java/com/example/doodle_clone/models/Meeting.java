@@ -13,6 +13,7 @@ import lombok.Setter;
 import lombok.NonNull;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -27,8 +28,6 @@ public class Meeting {
     private Long id;
 
     @OneToMany(mappedBy = "meeting")
-
-
     private List<Slot> slots;
 
     @NonNull private String title;
