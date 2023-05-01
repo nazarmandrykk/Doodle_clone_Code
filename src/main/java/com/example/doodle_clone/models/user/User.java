@@ -1,4 +1,4 @@
-package com.example.doodle_clone.models;
+package com.example.doodle_clone.models.user;
 
 import jakarta.persistence.*;
 import lombok.Getter;

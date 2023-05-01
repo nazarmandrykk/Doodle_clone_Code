@@ -1,5 +1,6 @@
-package com.example.doodle_clone.models;
+package com.example.doodle_clone.models.user;
 
+import com.example.doodle_clone.models.user.User;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
