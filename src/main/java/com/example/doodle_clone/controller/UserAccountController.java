@@ -13,7 +13,9 @@ import com.example.doodle_clone.services.EmailSenderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -31,20 +33,17 @@ public class UserAccountController {
     private EmailSenderService emailSenderService;
 
     @RequestMapping(value="/register", method = RequestMethod.GET)
-    public ModelAndView displayRegistration(ModelAndView modelAndView, User user)
-    {
+    public ModelAndView displayRegistration(ModelAndView modelAndView, User user) {
         modelAndView.addObject("user", user);
         modelAndView.setViewName("register");
         return modelAndView;
     }
 
     @RequestMapping(value="/register", method = RequestMethod.POST)
-    public ModelAndView registerUser(ModelAndView modelAndView, User user) throws SendFailedException
-    {
+    public ModelAndView registerUser(ModelAndView modelAndView, User user) throws SendFailedException {
 
         User existingUser = userRepository.findByEmailId(user.getEmailId());
-        if (existingUser != null)
-        {
+        if (existingUser != null) {
             modelAndView.addObject("message","Пошта зайнята!");
             modelAndView.setViewName("error");
         } else {
@@ -68,11 +67,9 @@ public class UserAccountController {
     }
 
     @RequestMapping(value="/confirm-account", method= {RequestMethod.GET, RequestMethod.POST})
-    public ModelAndView confirmUserAccount(ModelAndView modelAndView, @RequestParam("token")String confirmationToken)
-    {
+    public ModelAndView confirmUserAccount(ModelAndView modelAndView, @RequestParam("token")String confirmationToken) {
         ConfirmationToken token = confirmationTokenRepository.findByConfirmationToken(confirmationToken);
-        if (token != null)
-        {
+        if (token != null) {
             User user = userRepository.findByEmailId(token.getUser().getEmailId());
             user.setEnabled(true);
             BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -81,8 +78,7 @@ public class UserAccountController {
             userRepository.save(user);
             modelAndView.setViewName("accountVerified");
         }
-        else
-        {
+        else {
             modelAndView.addObject("message","Посилання не робоче");
             modelAndView.setViewName("error");
         }

@@ -20,7 +20,7 @@ import java.util.List;
 @Getter
 @Setter
 @RequiredArgsConstructor
-@NoArgsConstructor
+
 public class Meeting {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -37,6 +37,10 @@ public class Meeting {
     private int adminID;
 
    private int userID;
+
+   public Meeting(){
+
+   }
 
 
 

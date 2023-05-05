@@ -21,6 +21,7 @@ import javax.sql.DataSource;
 public class SecurityConfiguration {
 
 
+
     @Autowired
     private DataSource dataSource;
 
@@ -44,7 +45,7 @@ public class SecurityConfiguration {
         return authProvider;
     }
 
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception { //
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(authenticationProvider());
     }
 
