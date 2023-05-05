@@ -24,7 +24,7 @@ import java.util.stream.IntStream;
 public class MainController {
 
     @Autowired
-    private MeetingRepository meetingRepository; //репозиторій зустрічі
+    private MeetingRepository meetingRepository;
 
     @Autowired
     private SlotRepository slotRepository;
@@ -78,9 +78,7 @@ public class MainController {
     public String meetingDelete(@PathVariable(value = "id") long id, Model model) {
         Meeting meeting = meetingRepository.findById(id).orElseThrow();
         meetingRepository.delete(meeting);
-        //cascad remove реалізувати
         return "redirect:/main-title";
-        //
     }
 }
 

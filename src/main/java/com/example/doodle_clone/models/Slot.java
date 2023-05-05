@@ -33,7 +33,7 @@ public class Slot {
     private int costMember;
 
 
-    private int idUsers;
+    private int userID;
 
 
     public Slot(Meeting meeting, String name) {

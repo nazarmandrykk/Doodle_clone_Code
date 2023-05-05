@@ -34,12 +34,9 @@ public class Meeting {
     @NonNull private String text;
     @NonNull private String location;
     @NonNull private int count;
-    private int IDadmin;
-    private int idUsers;
+    private int adminID;
 
-    //time ????
-
-
+   private int userID;
 
 
 

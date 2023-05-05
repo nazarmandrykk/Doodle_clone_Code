@@ -20,8 +20,6 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 public class SecurityConfiguration {
 
-    //@Bean
-    //public WebSecurityCustomizer webSecurityCustomizer() {return (web) -> web.ignoring().anyRequest();}
 
     @Autowired
     private DataSource dataSource;

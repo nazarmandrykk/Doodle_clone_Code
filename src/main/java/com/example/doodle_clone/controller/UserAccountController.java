@@ -43,15 +43,11 @@ public class UserAccountController {
     {
 
         User existingUser = userRepository.findByEmailId(user.getEmailId());
-        if(existingUser != null)
+        if (existingUser != null)
         {
             modelAndView.addObject("message","Пошта зайнята!");
             modelAndView.setViewName("error");
-        }
-        else
-        {
-
-
+        } else {
             userRepository.save(user);
             ConfirmationToken confirmationToken = new ConfirmationToken(user);
             confirmationTokenRepository.save(confirmationToken);
@@ -75,7 +71,7 @@ public class UserAccountController {
     public ModelAndView confirmUserAccount(ModelAndView modelAndView, @RequestParam("token")String confirmationToken)
     {
         ConfirmationToken token = confirmationTokenRepository.findByConfirmationToken(confirmationToken);
-        if(token != null)
+        if (token != null)
         {
             User user = userRepository.findByEmailId(token.getUser().getEmailId());
             user.setEnabled(true);
