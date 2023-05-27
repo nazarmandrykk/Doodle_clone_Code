@@ -33,12 +33,22 @@ public class Slot {
     private int costMember;
 
 
+
+
     private int userID;
+
 
 
     public Slot(Meeting meeting, String name) {
         this.meeting = meeting;
         this.name = name;
+    }
+
+
+    public Slot(Meeting meeting, String name) {
+        this.meeting = meeting;
+        this.name = name;
+
     }
 
     public Slot(String name, int costMember) {

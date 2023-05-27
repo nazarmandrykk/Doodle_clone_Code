@@ -1,6 +1,7 @@
 package com.example.doodle_clone.models;
 
 
+
 import jakarta.persistence.Id;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,15 +29,22 @@ public class Meeting {
     private Long id;
 
     @OneToMany(mappedBy = "meeting")
+
     private List<Slot> slots;
 
     @NonNull private String title;
     @NonNull private String text;
     @NonNull private String location;
     @NonNull private int count;
+
     private int adminID;
 
    private int userID;
+
+    private int IDadmin;
+    private int idUsers;
+
+
 
    public Meeting(){
 
