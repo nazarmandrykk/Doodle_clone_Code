@@ -44,10 +44,8 @@ public class SecurityConfiguration {
 
         return authProvider;
     }
+    //test
 
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(authenticationProvider());
-    }
 
 
     @Bean

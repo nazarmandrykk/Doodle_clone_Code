@@ -9,10 +9,12 @@ import jakarta.persistence.Column;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 
 @Entity
 @NoArgsConstructor
 @Getter @Setter
+
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

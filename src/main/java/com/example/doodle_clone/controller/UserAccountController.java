@@ -39,6 +39,7 @@ public class UserAccountController {
         return modelAndView;
     }
 
+
     @RequestMapping(value="/register", method = RequestMethod.POST)
     public ModelAndView registerUser(ModelAndView modelAndView, User user) throws SendFailedException {
 
@@ -50,7 +51,6 @@ public class UserAccountController {
             userRepository.save(user);
             ConfirmationToken confirmationToken = new ConfirmationToken(user);
             confirmationTokenRepository.save(confirmationToken);
-
             SimpleMailMessage mailMessage = new SimpleMailMessage();
             mailMessage.setTo(user.getEmailId());
             mailMessage.setSubject("Підтвердіть реєстрацію!");
@@ -77,6 +77,7 @@ public class UserAccountController {
             user.setPassword(encodedPassword);
             userRepository.save(user);
             modelAndView.setViewName("accountVerified");
+            System.out.println("All procces succsess");
         }
         else {
             modelAndView.addObject("message","Посилання не робоче");
